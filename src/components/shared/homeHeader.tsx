@@ -7,7 +7,7 @@ import Link from "next/link";
 const navLinks = [
     { name: "Stake House", path: "/" },
     { name: "News Feeds", path: "/about" },
-    { name: "Earn", path: "/contact" },
+    { name: "Earn", path: "/page" },
     { name: "Ranking", path: "/contact" },
 ]
 
