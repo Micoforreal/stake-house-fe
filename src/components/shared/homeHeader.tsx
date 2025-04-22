@@ -7,7 +7,7 @@ import Link from "next/link";
 const navLinks = [
     { name: "Stake House", path: "/" },
     { name: "News Feeds", path: "/about" },
-    { name: "Earn", path: "/page" },
+    { name: "Earn", path: "/earn" },
     { name: "Ranking", path: "/contact" },
 ]
 
@@ -22,7 +22,7 @@ const HomeHeader = () => {
 
             <div className="flex gap-16 mx-auto ">
                 {navLinks.map((link) => (
-                    <Link href={"#"} key={link.name} className="text-blue tracking-[1.5%] hover:text-blue-500">
+                    <Link href={link.path} key={link.name} className="text-blue tracking-[1.5%] hover:text-blue-500">
                         {link.name}
                     </Link>
                 ))}
