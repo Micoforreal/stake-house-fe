@@ -57,7 +57,7 @@ const Login = () => {
 
         <div className="flex justify-center gap-4">
           <button className="bg-[#577BC1] border px-4 py-2 rounded-[10px] text-sm text-white flex items-center gap-2">
-            <img src="../assets/images/GoogleIcon.svg" alt="Google" className="w-4 h-4" />
+            <img src="" alt="Google" className="w-4 h-4" />
             Sign in with Google
           </button>
           <button className="bg-[#000957] text-white px-4 py-2 rounded-[10px] text-sm">
