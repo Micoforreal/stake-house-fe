@@ -1,4 +1,3 @@
-import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import { Button } from "../../ui/button";
 import {
     Dialog,
@@ -13,7 +12,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 
 
-const PREDICTION=[
+const PREDICTION = [
     'man city',
     'draw',
     'man untd'
@@ -40,30 +39,32 @@ const EasyBet = ({ id }: props) => {
 
 
                 <div>
-                <ToggleGroup type="single" className="flex mx-auto my-4 gap-2">
-                    {PREDICTION.map((item,i)=>(
-                <ToggleGroupItem key={i} value={item} className={` bg-gray-300 border rounded-md data-[state=on]:bg-blue data-[state=on]:text-white border-blue ${item==="draw"&&"bg-transparent"} min-w-[100px]`}>{item==="draw"?"X":item}</ToggleGroupItem>
+                    {id}
+                    <ToggleGroup type="single" className="flex mx-auto my-4 gap-2">
+                        {PREDICTION.map((item, i) => (
+                            
+                            <ToggleGroupItem key={i} value={item} className={` bg-gray-300 border rounded-md data-[state=on]:bg-blue data-[state=on]:text-white border-blue ${item === "draw" && "bg-transparent"} min-w-[100px]`}>{item === "draw" ? "X" : item}</ToggleGroupItem>
 
-                    ))}
-                    
-                               </ToggleGroup>
-            </div>
+                        ))}
 
-
-            <DialogFooter className="mt-9">
-
-                <DialogClose>
-
-                <Button className="bg-amber-500 text-blue w-[70%] mx-auto">Confirm</Button>
-                </DialogClose>
-            </DialogFooter>
+                    </ToggleGroup>
+                </div>
 
 
+                <DialogFooter className="mt-9">
 
-        </DialogContent>
+                    <DialogClose>
+
+                        <Button className="bg-amber-500 text-blue w-[70%] mx-auto">Confirm</Button>
+                    </DialogClose>
+                </DialogFooter>
+
+
+
+            </DialogContent>
         </Dialog >
 
-     );
+    );
 }
 
 export default EasyBet;
