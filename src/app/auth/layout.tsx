@@ -1,4 +1,6 @@
-type Props = React.PropsWithChildren<{}>
+import { PropsWithChildren } from "react";
+
+type Props = PropsWithChildren
 
 const AuthLayout = ({children}:Props) => {
     return ( 

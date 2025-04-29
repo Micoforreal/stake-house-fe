@@ -25,13 +25,13 @@ const loginFormSchema =  z.object({
 })
 
 
-const registerFromSchema  = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  password: z.string().min(2)
+// const registerFromSchema  = z.object({
+//   username: z.string().min(2, {
+//     message: "Username must be at least 2 characters.",
+//   }),
+//   password: z.string().min(2)
   
-})
+// })
 
 // const handleLogin = (values: z.infer<typeof loginFormSchema>) => {
 //   console.log(values)

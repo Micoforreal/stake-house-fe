@@ -1,14 +1,6 @@
 import { AlarmClock, Share2Icon, Star } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "../../ui/button";
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
 import EasyBet from "./easyBetModal";
 
 
@@ -31,7 +23,7 @@ type props = {
 
 
 
-const MatchCard = ({ id, playing, category, endTime }: props) => {
+const MatchCard = ({ id, playing, category }: props) => {
     return (
         <div className="border md:max-w-[350px] w-full  p-2 rounded-lg">
             <div className="flex ">

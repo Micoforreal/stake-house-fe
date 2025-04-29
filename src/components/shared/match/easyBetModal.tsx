@@ -25,6 +25,7 @@ const EasyBet = ({id}: props) => {
                 <DialogHeader>
                     <DialogTitle>Are you absolutely sure?</DialogTitle>
                     <DialogDescription>
+                        {id}
                         This action cannot be undone. This will permanently delete your account
                         and remove your data from our servers.
                     </DialogDescription>

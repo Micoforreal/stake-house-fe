@@ -1,5 +1,5 @@
-import HomeHeader from "@/components/shared/navigation";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 
 
@@ -33,7 +33,7 @@ const Earn = () => {
           {tasks.map((item, index) => (
             <div key={index} className="flex items-center justify-between w-full max-w-[700px] border rounded-xl px-6 py-4 shadow-sm hover:shadow-md transition">
               <div className="flex items-center gap-4">
-                <img src="./assets/images/Vector(9).svg" alt="Twitter Icon" className="w-6 h-6" />
+                <Image src="./assets/images/Vector(9).svg" width={24} height={24} alt="Twitter Icon" className="w-6 h-6" />
                 <p className="text-base font-medium">Follow us on Twitter</p>
               </div>
               <span className="text-xl"><ChevronRight /></span>

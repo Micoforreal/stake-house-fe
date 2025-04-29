@@ -1,4 +1,4 @@
-type Props = React.PropsWithChildren<{}>
+type Props = React.PropsWithChildren
 
 const HomeLayout = ({children}:Props) => {
     return ( 

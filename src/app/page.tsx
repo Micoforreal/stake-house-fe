@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Home from "./home/page";
+
 import HomeHeader from "@/components/shared/navigation";
 import {
   Select,
@@ -12,8 +11,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import MatchCard from "@/components/shared/match/matchCard";
@@ -21,7 +18,7 @@ import manUImage from "@/assets/images/manchester_united_logo.png";
 import manCityImage from "@/assets/images/Manchester_City_logo.png"
 import football from "@/assets/images/football_category_logo.png"
 import fifaMatch from "@/assets/images/fifaMatch.png"
-import { Clock6, Clock6Icon, Filter } from "lucide-react";
+import {  Filter } from "lucide-react";
 
 
 
@@ -108,8 +105,8 @@ export default function App() {
     scrollbarWidth: "none", /* Firefox */
     msOverflowStyle: "none", /* IE 10+ */
   }}>
-          {categories.map((categoires) => (
-            <Select>
+          {categories.map((categoires,index) => (
+            <Select key={index}>
               <SelectTrigger className=" ps-6 data-[placeholder]:text-blue data-[size=default]:h-[30px] scrollbar-hide  border border-blue  w-[120px] text-center   text-blue">
                 <SelectValue className="ms-2" placeholder={categoires.name} />
               </SelectTrigger>
