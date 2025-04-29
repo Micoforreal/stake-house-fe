@@ -5,10 +5,10 @@ import Link from "next/link";
 
 
 const navLinks = [
-    { name: "Stake House", path: "/" ,icon:<House className="max-w-10 w-[90%]"/>},
-    { name: "Feeds", path: "/about", icon:<Newspaper className="max-w-10 w-[90%]"/> },
-    { name: "Earn", path: "/earn",icon:<CircleDollarSign className="max-w-10 w-[90%]"/> },
-    { name: "Ranking", path: "/contact", icon:<BarChart className="max-w-10 w-[90%]"/>},
+    { name: "Stake House", path: "/" ,icon:<House className="max-w-10 w-[70%]"/>},
+    { name: "Feeds", path: "/about", icon:<Newspaper className="max-w-10 w-[70%]"/> },
+    { name: "Earn", path: "/earn",icon:<CircleDollarSign className="max-w-10 w-[70%]"/> },
+    { name: "Ranking", path: "/contact", icon:<BarChart className="max-w-10 w-[70%] "/>},
 ]
 
 const HomeHeader = () => {
@@ -24,9 +24,9 @@ const HomeHeader = () => {
             </div>
 
 
-            <div className=" md:flex hidden gap-16 mx-auto ">
+            <div className=" md:flex hidden gap-10 mx-auto ">
                 {navLinks.map((link) => (
-                    <Link href={link.path} key={link.name} className="text-blue tracking-[1.5%] hover:text-blue-500">
+                    <Link href={link.path} key={link.name} className="text-blue  tracking-[1.5%] hover:text-blue-500">
 
                         {link.name}
                
@@ -58,9 +58,9 @@ const HomeHeader = () => {
                     <div className="flex justify-between">
 
                 {navLinks.map((link) => (
-                    <Link href={link.path} key={link.name} className="text-blue tracking-[1.5%] py-3  hover:text-blue-500">
-                     <div className="flex  text-sm items-center " >
-                        <span className="pe-2 ">{link.icon}</span>
+                    <Link href={link.path} key={link.name} className="text-blue  tracking-[1.5%] py-3  hover:text-blue-500">
+                     <div className="flex  text-xs items-center " >
+                        <span className=" ">{link.icon}</span>
                         {link.name}
                        </div>
                     </Link>
