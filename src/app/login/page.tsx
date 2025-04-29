@@ -1,13 +1,22 @@
-import React from 'react';
+"use client"
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import { SocialIcon } from 'react-social-icons'
+import googleIcon from "@/assets/images/google.png"
 
 const icon = [
-    {logo:"",action:"Sign in with Google"},  
+    {logo:googleIcon,action:"Sign in with Google"},  
   ]
 
+  
+  
+  const Login = () => {
+  const [email, setEmail] = useState('')
 
 
-
-const Login = () => {
+  useEffect(()=>{
+  console.log(email)
+  },[email])
   return (
     <div className="min-h-screen flex items-center justify-center bg-white">
       <div className="w-full max-w-md px-6 py-10">
@@ -23,6 +32,10 @@ const Login = () => {
           <div>
             <label className="block mb-1 text-sm">Username/Email</label>
             <input
+            value={email}
+            onChange={(e)=>{
+              setEmail(e.target.value)
+            }}
               type="text"
               placeholder="Enter your email or username"
               className="w-full px-4 py-2 border rounded-full text-sm outline-none focus:ring focus:ring-blue-300"
@@ -57,7 +70,10 @@ const Login = () => {
 
         <div className="flex justify-center gap-4">
           <button className="bg-[#577BC1] border px-4 py-2 rounded-[10px] text-sm text-white flex items-center gap-2">
-            <img src="" alt="Google" className="w-4 h-4" />
+           <Image src={googleIcon} width={50} height={50} alt='munirate image' />
+       
+            {/* <SocialIcon bgColor='black'   url='www.google.com'/> 
+           */}
             Sign in with Google
           </button>
           <button className="bg-[#000957] text-white px-4 py-2 rounded-[10px] text-sm">

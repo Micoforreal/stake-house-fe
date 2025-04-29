@@ -1,6 +1,16 @@
 import { AlarmClock, Share2Icon, Star } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import EasyBet from "./easyBetModal";
+
 
 
 type props = {
@@ -8,7 +18,7 @@ type props = {
     playing: ({
         player?: string | undefined;
         image: StaticImageData;
-   
+
     }
     )[];
     category: {
@@ -18,9 +28,12 @@ type props = {
     endTime: number;
 }
 
+
+
+
 const MatchCard = ({ id, playing, category, endTime }: props) => {
     return (
-        <div className="border w-[350px]  p-2 rounded-lg">
+        <div className="border md:max-w-[350px] w-full  p-2 rounded-lg">
             <div className="flex ">
                 <div className="border rounded-full w-[30px] h-[30px] bg-red-400 ">
                     <Image alt="category image" src={category.image} />
@@ -40,7 +53,7 @@ const MatchCard = ({ id, playing, category, endTime }: props) => {
             <div className="border flex flex-col justify-end mt-10 mb-5 rounded-2xl  h-[250px] w-full">
 
 
-                <div className={`flex ${playing.length>1?" justify-between":"justify-center py-2"}   px-7  font-semibold text-xl`}>
+                <div className={`flex ${playing.length > 1 ? " justify-between" : "justify-center py-2"}   px-7  font-semibold text-xl`}>
                     <span>{playing[0]?.player}</span>
                     <span>{playing[1]?.player}</span>
 
@@ -64,9 +77,9 @@ const MatchCard = ({ id, playing, category, endTime }: props) => {
                                 <Image src={playing[1]?.image} alt="player 1 image" />
                             </div>
                         </>
-                    ) :(
+                    ) : (
                         <div className=" border- border-pink-700 h-full w-full">
-                            <Image src={playing[0]?.image} className="object-co w-full h-full" alt="match image" />
+                            <Image src={playing[0]?.image} className="object-cover rounded-3xl w-fill  h-full" alt="match image" />
 
                         </div>
                     )}
@@ -78,9 +91,12 @@ const MatchCard = ({ id, playing, category, endTime }: props) => {
             <div className="flex items-center mb-4">
 
                 <div className="flex gap-2">
-                    <Button className="text-[14px] bg-[#577BC1] font-normal h-8 ">
-                        Easy Bet
-                    </Button>
+                    {
+                        <>
+
+                            <EasyBet id={id}/>
+                        </>
+                    }
                     <Button className="text-[14px] bg-blue font-normal h-8 ">
                         Advance Bet
                     </Button>

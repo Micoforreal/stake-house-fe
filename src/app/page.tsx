@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Home from "./home/page";
-import HomeHeader from "@/components/shared/homeHeader";
+import HomeHeader from "@/components/shared/navigation";
 import {
   Select,
   SelectContent,
@@ -16,12 +16,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import MatchCard from "@/components/shared/matchCard";
+import MatchCard from "@/components/shared/match/matchCard";
 import manUImage from "@/assets/images/manchester_united_logo.png";
 import manCityImage from "@/assets/images/Manchester_City_logo.png"
 import football from "@/assets/images/football_category_logo.png"
 import fifaMatch from "@/assets/images/fifaMatch.png"
-import { Filter } from "lucide-react";
+import { Clock6, Clock6Icon, Filter } from "lucide-react";
 
 
 
@@ -88,7 +88,7 @@ export default function App() {
       <HomeHeader />
 
 
-      <div className="px-4 flex pt-7 pb-3">
+      <div className="px-4 flex flex-col md:flex-row pt-7 pb-3">
 
         {/* payout button */}
         <div className="rounded-[10px] flex justify-center items-center bg-yellow w-[120px] py-1 px-[4.2rem] ">
@@ -104,10 +104,13 @@ export default function App() {
 
         {/* categoires */}
 
-        <div className="flex ms-auto space-x-7">
+        <div className="flex md:ms-auto my-5 md:my-0 space-x-7 overflow-auto " style={{
+    scrollbarWidth: "none", /* Firefox */
+    msOverflowStyle: "none", /* IE 10+ */
+  }}>
           {categories.map((categoires) => (
             <Select>
-              <SelectTrigger className=" ps-6 data-[placeholder]:text-blue data-[size=default]:h-[30px]  border border-blue    w-[120px] text-center   text-blue">
+              <SelectTrigger className=" ps-6 data-[placeholder]:text-blue data-[size=default]:h-[30px] scrollbar-hide  border border-blue  w-[120px] text-center   text-blue">
                 <SelectValue className="ms-2" placeholder={categoires.name} />
               </SelectTrigger>
               <SelectContent>
@@ -128,6 +131,8 @@ export default function App() {
         <DropdownMenu>
           <DropdownMenuTrigger className="flex gap-1 items-center">
             <Filter className="h-5 w-5" />
+
+
             <span className="font-medium text-[18px]">Filter</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="rounded-xl space-y-1">
