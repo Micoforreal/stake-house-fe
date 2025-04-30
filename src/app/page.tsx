@@ -14,12 +14,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import MatchCard from "@/components/shared/match/matchCard";
-import manUImage from "@/assets/images/manchester_united_logo.png";
-import manCityImage from "@/assets/images/Manchester_City_logo.png"
+// import manUImage from "@/assets/images/manchester_united_logo.png";
+// import manCityImage from "@/assets/images/Manchester_City_logo.png"
 import football from "@/assets/images/football_category_logo.png"
-import fifaMatch from "@/assets/images/fifaMatch.png"
+
 import {  Filter } from "lucide-react";
-import axois from 'axios'
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -34,67 +34,67 @@ const categories = [
 ]
 
 
-const matchData = [
-  {
-    id: 1,
-    playing: [
-      { player: 'Man United', image: manUImage },
-      { player: "Man City", image: manCityImage }
-    ],
-    // easyBetPredictions:[],
-    category: { name: 'football', image: football },
-    endTime: Date.now()
-  },
+// const matchData = [
+//   {
+//     id: 1,
+//     playing: [
+//       { player: 'Man United', image: manUImage },
+//       { player: "Man City", image: manCityImage }
+//     ],
+//     // easyBetPredictions:[],
+//     category: { name: 'football', image: football },
+//     endTime: Date.now()
+//   },
 
-  {
-    id: 2,
-    playing: [
-      { player: 'Man United', image: manUImage },
-      { player: "Man City", image: manCityImage }
-    ],
-    // easyBetPredictions:[],
-    category: { name: 'football', image: football },
-    endTime: Date.now()
-  },
+//   {
+//     id: 2,
+//     playing: [
+//       { player: 'Man United', image: manUImage },
+//       { player: "Man City", image: manCityImage }
+//     ],
+//     // easyBetPredictions:[],
+//     category: { name: 'football', image: football },
+//     endTime: Date.now()
+//   },
 
-  {
-    id: 2,
-    playing: [
-      { player: 'Man United', image: manUImage },
-      { player: "Man City", image: manCityImage }
-    ],
-    // easyBetPredictions:[],
-    category: { name: 'football', image: football },
-    endTime: Date.now()
-  },
+//   {
+//     id: 2,
+//     playing: [
+//       { player: 'Man United', image: manUImage },
+//       { player: "Man City", image: manCityImage }
+//     ],
+//     // easyBetPredictions:[],
+//     category: { name: 'football', image: football },
+//     endTime: Date.now()
+//   },
 
-  {
-    id: 4,
-    playing: [
-      { player: 'GamerHub Fifa 21 tournament ', image: fifaMatch },
-    ],
-    // easyBetPredictions:[],
-    category: { name: 'football', image: football },
-    endTime: Date.now()
-  }
+//   {
+//     id: 4,
+//     playing: [
+//       { player: 'GamerHub Fifa 21 tournament ', image: fifaMatch },
+//     ],
+//     // easyBetPredictions:[],
+//     category: { name: 'football', image: football },
+//     endTime: Date.now()
+//   }
 
-]
+// ]
 
 
 
 
 export default function App() {
-  const [matchApiData, setMatchApiData] = useState<any>()
+  const [matchApiData, setMatchApiData] = useState<unknown>(null)
 
-  const config = {
-    method: 'get',
-    url: 'https://api.sportmonks.com/v3/football/fixtures/between/2025-04-22/2025-04-30',
-    headers: {
-      'x-rapidapi-key': 'EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ',
-      'x-rapidapi-host': 'v3.api.sportmonks.com',
-  //  "Authorization":"Bearer EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ"
-    }
-  };
+  // const config = {
+  //   method: 'get',
+  //   url: 'https://api.sportmonks.com/v3/football/fixtures/between/2025-04-22/2025-04-30',
+  //   headers: {
+  //     'x-rapidapi-key': 'EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ',
+  //     'x-rapidapi-host': 'v3.api.sportmonks.com',
+  // //  "Authorization":"Bearer EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ"
+  //   }
+  // };
 
   useEffect(()=>{
 
@@ -182,11 +182,12 @@ console.log(matchApiData)
       <div className=" w-[100v mx-auto border-pink-500">
 
         <div className="flex w-[95%] b  mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">
-          {matchApiData && matchApiData.map((match:any) => (
+          {Array.isArray(matchApiData) &&
+  matchApiData.map((match)=> (
 
             <>
           
-              <MatchCard id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} endTime={match.endTime} />
+              <MatchCard id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }}  />
             </>
           ))}
         </div>

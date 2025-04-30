@@ -1,5 +1,5 @@
 import { AlarmClock, Share2Icon, Star } from "lucide-react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Button } from "../../ui/button";
 import EasyBet from "./easyBetModal";
 
@@ -23,7 +23,7 @@ import EasyBet from "./easyBetModal";
 
 
 
-const MatchCard = ({ id , playing, category }: any) => {
+const MatchCard = ({ id , playing, category }) => {
     return (
         <div className="border md:max-w-[350px] w-full  p-2 rounded-lg">
             <div className="flex ">
