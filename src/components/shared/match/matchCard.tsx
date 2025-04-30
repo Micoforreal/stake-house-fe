@@ -5,25 +5,25 @@ import EasyBet from "./easyBetModal";
 
 
 
-type props = {
-    id: number;
-    playing: ({
-        player?: string | undefined;
-        image: StaticImageData;
+// type props = {
+//     id: number;
+//     playing: ({
+//         player?: string | undefined;
+//         image: StaticImageData;
 
-    }
-    )[];
-    category: {
-        name: string,
-        image: StaticImageData,
-    };
-    endTime: number;
-}
-
-
+//     }
+//     )[];
+//     category: {
+//         name: string,
+//         image: StaticImageData,
+//     };
+//     endTime: number;
+// }
 
 
-const MatchCard = ({ id, playing, category }: props) => {
+
+
+const MatchCard = ({ id , playing, category }: any) => {
     return (
         <div className="border md:max-w-[350px] w-full  p-2 rounded-lg">
             <div className="flex ">
@@ -42,36 +42,47 @@ const MatchCard = ({ id, playing, category }: props) => {
             </div>
 
 
-            <div className="border flex flex-col justify-end mt-10 mb-5 rounded-2xl  h-[250px] w-full">
+            <div className="border flex flex-col justify-end mt-10 mb-5 rounded-2xl  h w-full">
 
 
-                <div className={`flex ${playing.length > 1 ? " justify-between" : "justify-center py-2"}   px-7  font-semibold text-xl`}>
-                    <span>{playing[0]?.player}</span>
-                    <span>{playing[1]?.player}</span>
+                {/* <div className={`flex ${playing.length > 1 ? " " : ""} border justify-between px-7  font-semibold text-xl`}>
+                    <span>{playing.home.name}</span>
+                    <span>{playing.away.name}</span>
 
-                </div>
+                </div> */}
 
                 <div className=" w-[97%] h-[80%] rounded-3xl mx-auto flex justify-center space-x-4 items-center mb-3.5">
 
-                    {playing.length > 1 ? (
+                    {category.name === "football" ? (
                         <>
+                        <div className="flex gap-x-16 justify-center">
 
-                            <div className="w-[40%]">
 
-                                <Image src={playing[0]?.image} alt="player 1 image" />
+                            <div className="w-[40%]  flex flex-col items-center">
+                                <h1 className=" pt-5 font-semibold ">{playing.home.name}</h1>
+                                
+
+                                <Image height={100} width={100}   src={playing.home.logo} alt="player 1 image" className="object-cover my-10 " />
+                                
                             </div>
 
 
-                            <span className="font-semibold text-xl">VS</span>
+                            <span className="font-semibold text-xl border h-full my-auto">VS</span>
 
-                            <div className="w-[40%]">
+                           
+                            <div className="w-[40%]  flex flex-col items-center">
+                                <h1 className=" pt-5 font-semibold ">{playing.away.name}</h1>
+                                
 
-                                <Image src={playing[1]?.image} alt="player 1 image" />
+                                <Image height={100} width={100}   src={playing.away.logo} alt="player 1 image" className="object-cover my-10 " />
+                                
                             </div>
+
+                        </div>
                         </>
                     ) : (
                         <div className=" border- border-pink-700 h-full w-full">
-                            <Image src={playing[0]?.image} className="object-cover rounded-3xl w-fill  h-full" alt="match image" />
+                            <Image src={playing[0]?.image} width={1} height={1} className="object-cover rounded-3xl w-fill  h-full" alt="match image" />
 
                         </div>
                     )}

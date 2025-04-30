@@ -1,4 +1,4 @@
-
+"use client"
 import HomeHeader from "@/components/shared/navigation";
 import {
   Select,
@@ -19,7 +19,9 @@ import manCityImage from "@/assets/images/Manchester_City_logo.png"
 import football from "@/assets/images/football_category_logo.png"
 import fifaMatch from "@/assets/images/fifaMatch.png"
 import {  Filter } from "lucide-react";
-
+import axois from 'axios'
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
 
@@ -78,7 +80,41 @@ const matchData = [
 
 ]
 
+
+
+
 export default function App() {
+  const [matchApiData, setMatchApiData] = useState<any>()
+
+  const config = {
+    method: 'get',
+    url: 'https://api.sportmonks.com/v3/football/fixtures/between/2025-04-22/2025-04-30',
+    headers: {
+      'x-rapidapi-key': 'EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ',
+      'x-rapidapi-host': 'v3.api.sportmonks.com',
+  //  "Authorization":"Bearer EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ"
+    }
+  };
+
+  useEffect(()=>{
+
+    axios.get('http://localhost:8000/api/match')
+    .then(function (response) {
+      
+      setMatchApiData(response.data[0].data.response)
+
+      console.log(response.data[0].data.response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  },[])
+
+useEffect(()=>{
+console.log(matchApiData)
+},[matchApiData])
+
+
   return (
     <div>
 
@@ -146,10 +182,11 @@ export default function App() {
       <div className=" w-[100v mx-auto border-pink-500">
 
         <div className="flex w-[95%] b  mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">
-          {matchData.map((match) => (
+          {matchApiData && matchApiData.map((match:any) => (
 
             <>
-              <MatchCard id={match.id} playing={match.playing} category={match.category} endTime={match.endTime} />
+          
+              <MatchCard id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} endTime={match.endTime} />
             </>
           ))}
         </div>

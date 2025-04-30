@@ -32,8 +32,8 @@ const EasyBet = ({ id }: props) => {
                 </Button>
             </DialogTrigger>
             <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Make a prediction</DialogTitle>
+                <DialogHeader className="">
+                    <DialogTitle className="text-center">Make a prediction</DialogTitle>
 
                 </DialogHeader>
 
@@ -51,11 +51,11 @@ const EasyBet = ({ id }: props) => {
                 </div>
 
 
-                <DialogFooter className="mt-9">
+                <DialogFooter className="mt-9 md:justify-center  ">
 
                     <DialogClose>
 
-                        <Button className="bg-amber-500 text-blue w-[70%] mx-auto">Confirm</Button>
+                        <Button className="bg-amber-500 text-blue md:w-[200px] w-[70%] mx-auto">Confirm</Button>
                     </DialogClose>
                 </DialogFooter>
 
