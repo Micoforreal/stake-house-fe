@@ -84,7 +84,7 @@ const categories = [
 
 
 export default function App() {
-  const [matchApiData, setMatchApiData] = useState<any[] | null>([]);
+  const [matchApiData, setMatchApiData] = useState([]);
 
   // const config = {
   //   method: 'get',
