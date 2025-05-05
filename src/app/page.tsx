@@ -17,8 +17,8 @@ import MatchCard from "@/components/shared/match/matchCard";
 // import manUImage from "@/assets/images/manchester_united_logo.png";
 // import manCityImage from "@/assets/images/Manchester_City_logo.png"
 import football from "@/assets/images/football_category_logo.png"
-
-import {  Filter } from "lucide-react";
+import { Grid } from 'react-virtualized';
+import { Filter } from "lucide-react";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -84,7 +84,7 @@ const categories = [
 
 
 export default function App() {
-  const [matchApiData, setMatchApiData] = useState<unknown>(null)
+  const [matchApiData, setMatchApiData] = useState<any[] | null>([]);
 
   // const config = {
   //   method: 'get',
@@ -96,23 +96,66 @@ export default function App() {
   //   }
   // };
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    axios.get('http://localhost:8000/api/match')
-    .then(function (response) {
-      
-      setMatchApiData(response.data[0].data.response)
+    axios.get('http://localhost:8000/api/match?category=football')
+      .then(function (response) {
 
-      console.log(response.data[0].data.response)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  },[])
+        setMatchApiData(response.data[0].data.response)
 
-useEffect(()=>{
-console.log(matchApiData)
-},[matchApiData])
+        console.log(response.data[0].data.response)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [])
+
+  useEffect(() => {
+    console.log(matchApiData)
+  }, [matchApiData])
+
+
+
+  const [columnCount, setColumnCount] = useState(1);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      const width = window.innerWidth;
+      if (width < 640) setColumnCount(1);       // Mobile
+      else if (width < 1024) setColumnCount(2); // Tablet
+      else setColumnCount(3);                   // Desktop
+    };
+
+    updateLayout();
+    window.addEventListener('resize', updateLayout);
+    return () => window.removeEventListener('resize', updateLayout);
+  }, []);
+
+  const rowCount = Math.ceil(matchApiData.length / columnCount);
+
+
+
+  const renderMatch = ({ key, rowIndex, columnIndex, style }) => {
+    const index = rowIndex * columnCount + columnIndex;
+    const match = matchApiData[index];
+    if (!match) return null;
+
+    return (
+      // <div style={style} className="bg-pink-300 " key={key}>{match.teams.home.name}</div>
+
+
+      // <MatchCard key={key} id={matchApiData[rowIndex]?.fixture?.id | 1} playing={matchApiData[rowIndex].teams} category={{ name: 'football', image: football }} />
+
+      <MatchCard style={style}  key={key} id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} />
+
+
+
+
+      // <div key={key} className="bg-green-400 h-20 w-20">{matchApiData[rowIndex}</div>
+    )
+    // }
+
+  }
 
 
   return (
@@ -127,21 +170,28 @@ console.log(matchApiData)
         <div className="rounded-[10px] flex justify-center items-center bg-yellow w-[120px] py-1 px-[4.2rem] ">
           <div className=" flex items-center justify-center  space-x-4">
             <span className="text-[18px]">payroll</span>
-            <div className="bg-blue rounded-full flex  text-white w-5 h-5 justify-center items-center">
-              <span>1</span>
-            </div>
+            {/* <div className="bg-blue rounded-full flex  text-white w-5 h-5 justify-center items-center">
+              <span></span>
+            </div> */}
+
+
+
           </div>
 
         </div>
+        {
+
+
+        }
 
 
         {/* categoires */}
 
         <div className="flex md:ms-auto my-5 md:my-0 space-x-7 overflow-auto " style={{
-    scrollbarWidth: "none", /* Firefox */
-    msOverflowStyle: "none", /* IE 10+ */
-  }}>
-          {categories.map((categoires,index) => (
+          scrollbarWidth: "none", /* Firefox */
+          msOverflowStyle: "none", /* IE 10+ */
+        }}>
+          {categories.map((categoires, index) => (
             <Select key={index}>
               <SelectTrigger className=" ps-6 data-[placeholder]:text-blue data-[size=default]:h-[30px] scrollbar-hide  border border-blue  w-[120px] text-center   text-blue">
                 <SelectValue className="ms-2" placeholder={categoires.name} />
@@ -181,15 +231,29 @@ console.log(matchApiData)
       {/* matches */}
       <div className=" w-[100v mx-auto border-pink-500">
 
-        <div className="flex w-[95%] b  mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">
-          {Array.isArray(matchApiData) &&
-  matchApiData.map((match)=> (
+        <div className="flex w-[95%] b scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">
+          {/* {Array.isArray(matchApiData) &&
+            matchApiData.map((match) => (
 
-            <>
+              <>
+
+                <MatchCard id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} />
+              </>
+            ))} */}
+
+
+          <Grid
+            cellRenderer={renderMatch}
+            columnCount={columnCount}
+            columnWidth={400}
+            autoWidth={true}
+            height={500}
+            rowCount={rowCount}
+            rowHeight={500}
+            width={columnCount * 500}
+            className="scrollbar-hide "
           
-              <MatchCard id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }}  />
-            </>
-          ))}
+          />
         </div>
 
 

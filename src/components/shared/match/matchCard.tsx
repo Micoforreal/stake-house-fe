@@ -23,9 +23,11 @@ import EasyBet from "./easyBetModal";
 
 
 
-const MatchCard = ({ id , playing, category }) => {
+const MatchCard = ({ id ,style,  playing, category }) => {
     return (
-        <div className="border md:max-w-[350px] w-full  p-2 rounded-lg">
+        <div style={{...style, marginRight:"0px", gap:"0px", padding:"0px", columnGap:"0px", width:'70%' , maxWidth:"350px", marginBottom:'20px',}} className="rder">
+
+        <div  className="border md:max-w-[350px] w-[100%]  md:h-[430px] p-2 rounded-lg">
             <div className="flex ">
                 <div className="border rounded-full w-[30px] h-[30px] bg-red-400 ">
                     <Image alt="category image" src={category.image} />
@@ -48,8 +50,8 @@ const MatchCard = ({ id , playing, category }) => {
                 {/* <div className={`flex ${playing.length > 1 ? " " : ""} border justify-between px-7  font-semibold text-xl`}>
                     <span>{playing.home.name}</span>
                     <span>{playing.away.name}</span>
-
-                </div> */}
+                    
+                    </div> */}
 
                 <div className=" w-[97%] h-[80%] rounded-3xl mx-auto flex justify-center space-x-4 items-center mb-3.5">
 
@@ -116,6 +118,7 @@ const MatchCard = ({ id , playing, category }) => {
 
 
         </div>
+                    </div>
     );
 }
 
