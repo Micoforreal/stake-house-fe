@@ -1,22 +1,22 @@
-import { ChevronRight } from "lucide-react";
-import Image from "next/image";
+// import { ChevronRight } from "lucide-react";
+// import Image from "next/image";
+import ComingSoonPage from '@/components/shared/comingSoon'
 
 
 
-const tasks = [
-  { logo: "", action: "follow us on Twitter (X)" },
-  { logo: "", action: "follow us on Twitter (X)" },
-  { logo: "", action: "follow us on Twitter (X)" },
+// const tasks = [
+//   { logo: "", action: "follow us on Twitter (X)" },
+//   { logo: "", action: "follow us on Twitter (X)" },
+//   { logo: "", action: "follow us on Twitter (X)" },
 
-]
+// ]
 
 const Earn = () => {
   return (
     <>
-
-
-
-
+<ComingSoonPage/>
+    
+{/* 
 
       <main className="flex-1 p-10">
         <h2 className="text-center text-2xl font-semibold mb-8">Earn Our Token</h2>
@@ -42,7 +42,7 @@ const Earn = () => {
         </div>
       </main>
 
-      {/* just testing push again */}
+      just testing push again */}
     </>
 
   );

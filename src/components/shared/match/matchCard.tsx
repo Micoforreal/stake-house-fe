@@ -5,6 +5,7 @@ import EasyBet from "./easyBetModal";
 
 
 
+
 // type props = {
 //     id: number;
 //     playing: ({
@@ -24,8 +25,10 @@ import EasyBet from "./easyBetModal";
 
 
 const MatchCard = ({ id ,style,  playing, category }) => {
+
+
     return (
-        <div style={{...style, marginRight:"0px", gap:"0px", padding:"0px", columnGap:"0px", width:'70%' , maxWidth:"350px", marginBottom:'20px',}} className="rder">
+        <div style={{...style, marginRight:"0px", gap:"0px", columnGap:"0px", width:'100%' ,   maxWidth:"350px", marginBottom:'20px', }} className="md:pr-0 pr-[50px]">
 
         <div  className="border md:max-w-[350px] w-[100%]  md:h-[430px] p-2 rounded-lg">
             <div className="flex ">
@@ -57,26 +60,23 @@ const MatchCard = ({ id ,style,  playing, category }) => {
 
                     {category.name === "football" ? (
                         <>
-                        <div className="flex gap-x-16 justify-center">
+                        <div className="flex gap-x-12 justif">
 
-
-                            <div className="w-[40%]  flex flex-col items-center">
-                                <h1 className=" pt-5 font-semibold ">{playing.home.name}</h1>
-                                
-
-                                <Image height={100} width={100}   src={playing.home.logo} alt="player 1 image" className="object-cover my-10 " />
-                                
+                            {/* player 1 */}
+                            <div className="w-[50%]   flex flex-col items-center">
+                           <h1 className=" text-center h-full  pt-5 font-semibold ">{playing.home.name}</h1>
+                                <div className="w-[100%] h-[100%] rounded-3xl mx-auto flex  justify-center  space-x-4 items-center mb-3.5">
+                                <Image   src={playing.home.logo} alt="player 1 image" className="object-cover my-10 max-w-20 max-h-20" />
+                                </div>
                             </div>
+                            <span className="font-semibold text-xl  h-full  my-auto">VS</span>                           
+                           {/* player 2 */}
+                            <div className="w-[50%]   flex flex-col items-center">
+                                <h1 className=" pt-5 font-semibold text-center ">{playing.away.name}</h1>
+                                <div className="w-[100%] h-[100%] rounded-3xl mx-auto flex  justify-center  space-x-4 items-center mb-3.5">
 
-
-                            <span className="font-semibold text-xl border h-full my-auto">VS</span>
-
-                           
-                            <div className="w-[40%]  flex flex-col items-center">
-                                <h1 className=" pt-5 font-semibold ">{playing.away.name}</h1>
-                                
-
-                                <Image height={100} width={100}   src={playing.away.logo} alt="player 1 image" className="object-cover my-10 " />
+                                <Image   src={playing.away.logo} alt="player 1 image" className="object-contain   my-10 max-w-20 max-h-20 " />
+                                </div>
                                 
                             </div>
 

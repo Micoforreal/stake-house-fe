@@ -14,14 +14,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import MatchCard from "@/components/shared/match/matchCard";
-// import manUImage from "@/assets/images/manchester_united_logo.png";
-// import manCityImage from "@/assets/images/Manchester_City_logo.png"
 import football from "@/assets/images/football_category_logo.png"
-import { Grid } from 'react-virtualized';
 import { Filter } from "lucide-react";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import GridLayout from "@/components/shared/gridLayout";
 
 
 
@@ -32,70 +30,8 @@ const categories = [
   { name: "Event", data: [{ id: 1, name: "football", image: "" },] }
 
 ]
-
-
-// const matchData = [
-//   {
-//     id: 1,
-//     playing: [
-//       { player: 'Man United', image: manUImage },
-//       { player: "Man City", image: manCityImage }
-//     ],
-//     // easyBetPredictions:[],
-//     category: { name: 'football', image: football },
-//     endTime: Date.now()
-//   },
-
-//   {
-//     id: 2,
-//     playing: [
-//       { player: 'Man United', image: manUImage },
-//       { player: "Man City", image: manCityImage }
-//     ],
-//     // easyBetPredictions:[],
-//     category: { name: 'football', image: football },
-//     endTime: Date.now()
-//   },
-
-//   {
-//     id: 2,
-//     playing: [
-//       { player: 'Man United', image: manUImage },
-//       { player: "Man City", image: manCityImage }
-//     ],
-//     // easyBetPredictions:[],
-//     category: { name: 'football', image: football },
-//     endTime: Date.now()
-//   },
-
-//   {
-//     id: 4,
-//     playing: [
-//       { player: 'GamerHub Fifa 21 tournament ', image: fifaMatch },
-//     ],
-//     // easyBetPredictions:[],
-//     category: { name: 'football', image: football },
-//     endTime: Date.now()
-//   }
-
-// ]
-
-
-
-
 export default function App() {
   const [matchApiData, setMatchApiData] = useState([]);
-
-  // const config = {
-  //   method: 'get',
-  //   url: 'https://api.sportmonks.com/v3/football/fixtures/between/2025-04-22/2025-04-30',
-  //   headers: {
-  //     'x-rapidapi-key': 'EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ',
-  //     'x-rapidapi-host': 'v3.api.sportmonks.com',
-  // //  "Authorization":"Bearer EAnzEkHh6AHiCywGOGmJZPlJM918MNXk97rZWPHPevhwHIQnL0THNLwFwcdZ"
-  //   }
-  // };
-
   useEffect(() => {
 
     axios.get('http://localhost:8000/api/match?category=football')
@@ -118,42 +54,19 @@ export default function App() {
 
   const [columnCount, setColumnCount] = useState(1);
 
-  useEffect(() => {
-    const updateLayout = () => {
-      const width = window.innerWidth;
-      if (width < 640) setColumnCount(1);       // Mobile
-      else if (width < 1024) setColumnCount(2); // Tablet
-      else setColumnCount(3);                   // Desktop
-    };
-
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-    return () => window.removeEventListener('resize', updateLayout);
-  }, []);
-
-  const rowCount = Math.ceil(matchApiData.length / columnCount);
+  
 
 
 
-  const renderMatch = ({ key, rowIndex, columnIndex, style }) => {
+  const RenderMatch = ({ key, rowIndex, columnIndex, style }) => {
     const index = rowIndex * columnCount + columnIndex;
     const match = matchApiData[index];
     if (!match) return null;
 
     return (
-      // <div style={style} className="bg-pink-300 " key={key}>{match.teams.home.name}</div>
-
-
-      // <MatchCard key={key} id={matchApiData[rowIndex]?.fixture?.id | 1} playing={matchApiData[rowIndex].teams} category={{ name: 'football', image: football }} />
-
       <MatchCard style={style}  key={key} id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} />
 
-
-
-
-      // <div key={key} className="bg-green-400 h-20 w-20">{matchApiData[rowIndex}</div>
     )
-    // }
 
   }
 
@@ -170,12 +83,9 @@ export default function App() {
         <div className="rounded-[10px] flex justify-center items-center bg-yellow w-[120px] py-1 px-[4.2rem] ">
           <div className=" flex items-center justify-center  space-x-4">
             <span className="text-[18px]">payroll</span>
-            {/* <div className="bg-blue rounded-full flex  text-white w-5 h-5 justify-center items-center">
-              <span></span>
-            </div> */}
-
-
-
+            <div className="bg-blue rounded-full flex  text-white w-5 h-5 justify-center items-center">
+              <span>1</span>
+            </div>
           </div>
 
         </div>
@@ -231,29 +141,8 @@ export default function App() {
       {/* matches */}
       <div className=" w-[100v mx-auto border-pink-500">
 
-        <div className="flex w-[95%] b scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">
-          {/* {Array.isArray(matchApiData) &&
-            matchApiData.map((match) => (
-
-              <>
-
-                <MatchCard id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} />
-              </>
-            ))} */}
-
-
-          <Grid
-            cellRenderer={renderMatch}
-            columnCount={columnCount}
-            columnWidth={400}
-            autoWidth={true}
-            height={500}
-            rowCount={rowCount}
-            rowHeight={500}
-            width={columnCount * 500}
-            className="scrollbar-hide "
-          
-          />
+        <div className="flex w-[95%] b scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">  
+       <GridLayout columnCount={columnCount} setColumnCount={setColumnCount} renderItem={RenderMatch} data={matchApiData}/>
         </div>
 
 

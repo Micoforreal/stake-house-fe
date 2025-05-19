@@ -34,33 +34,20 @@ const EasyBet = ({ id }: props) => {
             <DialogContent>
                 <DialogHeader className="">
                     <DialogTitle className="text-center">Make a prediction</DialogTitle>
-
                 </DialogHeader>
-
-
                 <div>
                     {id}
                     <ToggleGroup type="single" className="flex mx-auto my-4 gap-2">
                         {PREDICTION.map((item, i) => (
-                            
                             <ToggleGroupItem key={i} value={item} className={` bg-gray-300 border rounded-md data-[state=on]:bg-blue data-[state=on]:text-white border-blue ${item === "draw" && "bg-transparent"} min-w-[100px]`}>{item === "draw" ? "X" : item}</ToggleGroupItem>
-
                         ))}
-
                     </ToggleGroup>
                 </div>
-
-
                 <DialogFooter className="mt-9 md:justify-center  ">
-
                     <DialogClose>
-
                         <Button className="bg-amber-500 text-blue md:w-[200px] w-[70%] mx-auto">Confirm</Button>
                     </DialogClose>
                 </DialogFooter>
-
-
-
             </DialogContent>
         </Dialog >
 
