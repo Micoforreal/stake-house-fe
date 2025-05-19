@@ -16,7 +16,7 @@ import {
 import MatchCard from "@/components/shared/match/matchCard";
 import football from "@/assets/images/football_category_logo.png"
 import { Filter } from "lucide-react";
-
+import { API_URL } from "@/helpers/constants";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import GridLayout from "@/components/shared/gridLayout";
@@ -34,7 +34,7 @@ export default function App() {
   const [matchApiData, setMatchApiData] = useState([]);
   useEffect(() => {
 
-    axios.get('http://localhost:8000/api/match?category=football')
+    axios.get(`${API_URL}/api/match?category=football`)
       .then(function (response) {
 
         setMatchApiData(response.data[0].data.response)

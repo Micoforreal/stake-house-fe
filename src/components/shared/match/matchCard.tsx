@@ -33,7 +33,7 @@ const MatchCard = ({ id ,style,  playing, category }) => {
         <div  className="border md:max-w-[350px] w-[100%]  md:h-[430px] p-2 rounded-lg">
             <div className="flex ">
                 <div className="border rounded-full w-[30px] h-[30px] bg-red-400 ">
-                    <Image alt="category image" src={category.image} />
+                    <Image  alt="category image" src={category.image} />
                 </div>
                 <div className=" flex flex-col ms-auto items-center">
                     <div className="flex text-red-500 space-x-2">
@@ -66,7 +66,7 @@ const MatchCard = ({ id ,style,  playing, category }) => {
                             <div className="w-[50%]   flex flex-col items-center">
                            <h1 className=" text-center h-full  pt-5 font-semibold ">{playing.home.name}</h1>
                                 <div className="w-[100%] h-[100%] rounded-3xl mx-auto flex  justify-center  space-x-4 items-center mb-3.5">
-                                <Image   src={playing.home.logo} alt="player 1 image" className="object-cover my-10 max-w-20 max-h-20" />
+                                <img   src={playing.home.logo} alt="player 1 image" className="object-cover my-10 max-w-20 max-h-20" />
                                 </div>
                             </div>
                             <span className="font-semibold text-xl  h-full  my-auto">VS</span>                           
@@ -75,7 +75,7 @@ const MatchCard = ({ id ,style,  playing, category }) => {
                                 <h1 className=" pt-5 font-semibold text-center ">{playing.away.name}</h1>
                                 <div className="w-[100%] h-[100%] rounded-3xl mx-auto flex  justify-center  space-x-4 items-center mb-3.5">
 
-                                <Image   src={playing.away.logo} alt="player 1 image" className="object-contain   my-10 max-w-20 max-h-20 " />
+                                <img   src={playing.away.logo} alt="player 1 image" className="object-contain   my-10 max-w-20 max-h-20 " />
                                 </div>
                                 
                             </div>
