@@ -20,6 +20,7 @@ import { API_URL } from "@/helpers/constants";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import GridLayout from "@/components/shared/gridLayout";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 
 
@@ -54,7 +55,7 @@ export default function App() {
 
   const [columnCount, setColumnCount] = useState(1);
 
-  
+
 
 
 
@@ -64,11 +65,16 @@ export default function App() {
     if (!match) return null;
 
     return (
-      <MatchCard style={style}  key={key} id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} />
+      <MatchCard style={style} key={key} id={match?.fixture?.id | 1} playing={match.teams} category={{ name: 'football', image: football }} />
 
     )
 
   }
+
+
+
+
+
 
 
   return (
@@ -78,6 +84,29 @@ export default function App() {
 
 
       <div className="px-4 flex flex-col md:flex-row pt-7 pb-3">
+
+        <div>
+
+        <Tabs defaultValue="account" className="w-full       transition-all   border-[#BEBFC5] mt-5">
+          <TabsList className=" pb-0 bg-transparent rounded-none border-b-2 md:w-fit w-full flex ">
+            <TabsTrigger className="
+             data-[state=active]:text-blue 
+            data-[state=active]:border-b-[2px]
+            data-[state=active]:shadow-none
+            data-[state=active]:rounded-none
+            data-[state=active]:border-b-blue" value="account">Events</TabsTrigger>
+            <TabsTrigger className=" 
+            data-[state=active]:text-blue  
+            data-[state=active]:border-b-[2px]
+            data-[state=active]:shadow-none
+            data-[state=active]:rounded-none
+            data-[state=active]:border-b-blue
+            " value="password">Open Bets</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">.</TabsContent>
+          <TabsContent value="password">.</TabsContent>
+        </Tabs>
+            </div>
 
         {/* payout button */}
         <div className="rounded-[10px] flex justify-center items-center bg-yellow w-[120px] py-1 px-[4.2rem] ">
@@ -89,10 +118,7 @@ export default function App() {
           </div>
 
         </div>
-        {
 
-
-        }
 
 
         {/* categoires */}
@@ -141,8 +167,8 @@ export default function App() {
       {/* matches */}
       <div className=" w-[100v mx-auto border-pink-500">
 
-        <div className="flex w-[100%]  scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">  
-       <GridLayout columnCount={columnCount} setColumnCount={setColumnCount} renderItem={RenderMatch} data={matchApiData}/>
+        <div className="flex w-[100%]  scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">
+          <GridLayout columnCount={columnCount} setColumnCount={setColumnCount} renderItem={RenderMatch} data={matchApiData} />
         </div>
 
 
