@@ -141,7 +141,7 @@ export default function App() {
       {/* matches */}
       <div className=" w-[100v mx-auto border-pink-500">
 
-        <div className="flex w-[95%] b scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">  
+        <div className="flex w-[100%]  scrollbar-hide   mx-auto flex-wrap   gap-x-[calc(5%)]   gap-y-12  ">  
        <GridLayout columnCount={columnCount} setColumnCount={setColumnCount} renderItem={RenderMatch} data={matchApiData}/>
         </div>
 

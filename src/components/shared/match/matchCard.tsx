@@ -28,7 +28,7 @@ const MatchCard = ({ id ,style,  playing, category }) => {
 
 
     return (
-        <div style={{...style, marginRight:"0px", gap:"0px", columnGap:"0px", width:'100%' ,   maxWidth:"350px", marginBottom:'20px', }} className="md:pr-0 pr-[50px]">
+        <div style={{...style, marginRight:"0px", gap:"0px", columnGap:"0px", width:'100%' ,    marginBottom:'20px', }} className="md:pr-0  md:max-w-[350px] px-4 py-4 ">
 
         <div  className="border md:max-w-[350px] w-[100%]  md:h-[430px] p-2 rounded-lg">
             <div className="flex ">
