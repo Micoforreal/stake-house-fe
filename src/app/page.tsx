@@ -83,18 +83,17 @@ export default function App() {
       <HomeHeader />
 
 
-      <div className="px-4 flex flex-col md:flex-row pt-7 pb-3">
 
-        <div>
+        <div className="">
 
-        <Tabs defaultValue="account" className="w-full       transition-all   border-[#BEBFC5] mt-5">
-          <TabsList className=" pb-0 bg-transparent rounded-none border-b-2 md:w-fit w-full flex ">
+        <Tabs defaultValue="account" className="w-full transition-all  border-[#BEBFC5] mt-5">
+          <TabsList className=" pb-0 bg-transparent rounded-none border-b-2 md:max-w-[450px] w-full flex ">
             <TabsTrigger className="
              data-[state=active]:text-blue 
-            data-[state=active]:border-b-[2px]
-            data-[state=active]:shadow-none
-            data-[state=active]:rounded-none
-            data-[state=active]:border-b-blue" value="account">Events</TabsTrigger>
+             data-[state=active]:border-b-[2px]
+             data-[state=active]:shadow-none
+             data-[state=active]:rounded-none
+             data-[state=active]:border-b-blue" value="account">Events</TabsTrigger>
             <TabsTrigger className=" 
             data-[state=active]:text-blue  
             data-[state=active]:border-b-[2px]
@@ -108,6 +107,7 @@ export default function App() {
         </Tabs>
             </div>
 
+            <div className="px-4 flex flex-col md:flex-row pt-7 pb-3">
         {/* payout button */}
         <div className="rounded-[10px] flex justify-center items-center bg-yellow w-[120px] py-1 px-[4.2rem] ">
           <div className=" flex items-center justify-center  space-x-4">
